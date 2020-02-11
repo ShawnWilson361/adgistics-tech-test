@@ -1,0 +1,66 @@
+$curvature: 5px;
+$element-separator: '__';
+$font-size: 1.6rem;
+$grid-gap: 36px;
+$grid-width: 1280px;
+$menu-width: 375px;
+$modifier-separator: '--';
+$namespace-separator: '-';
+$shadow: 0 3px 6px rgba($neutral-08, 0.16);
+$speed: 0.5s;
+$state-prefix: 'is-';
+$tap-area: 44px;
+ 
+/* breakpoints */
+ 
+$screen-width-standard: 1025px;
+$screen-width-tablet-l: 1024px;
+$screen-width-tablet-p: 768px;
+$screen-width-mobile-l: 414px;
+$screen-width-mobile-s: 375px;
+ 
+$breakpoint-standard: 'only screen and (min-width: #{$screen-width-standard})';
+$breakpoint-tablet-l: 'only screen and (max-width: #{$screen-width-tablet-l})';
+$breakpoint-tablet-p: 'only screen and (max-width: #{$screen-width-tablet-p})';
+$breakpoint-mobile-l: 'only screen and (max-width: #{$screen-width-mobile-l})';
+$breakpoint-mobile-s: 'only screen and (max-width: #{$screen-width-mobile-s})';
+ 
+$breakpoints: (
+  'standard': $breakpoint-standard,
+  'tablet-l': $breakpoint-tablet-l,
+  'tablet-p': $breakpoint-tablet-p,
+  'mobile-l': $breakpoint-mobile-l,
+  'mobile-s': $breakpoint-mobile-s,
+);
+ 
+/* font-families */
+ 
+$stacks: (
+  'stack-1': ('Open Sans', sans-serif)
+);
+ 
+/* weights */
+ 
+$weights: (
+  'thin': 100,
+  'extra-light': 200,
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semi-bold': 600,
+  'bold': 700,
+  'extra-bold': 800,
+  'black': 900,
+);
+ 
+/* z-indexes */
+ 
+$layers: (
+  'below': -1,
+  'default': 1,
+  'above': 10,
+  'overlay': 100,
+  'menu': 1000,
+  'modal': 10000,
+  'beyond': 100000,
+);

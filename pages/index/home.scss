@@ -1,0 +1,43 @@
+@import '../../src/sass/variables.scss';
+
+@include block('home-page', 't') {
+  @include flex($direction: 'column');
+
+  @include element('container') {
+    @include container();
+  }
+
+  @include element('title') {
+    @include font('stack-1', 3.6rem, 'normal');
+
+    margin-top: 1.5rem;
+
+    @include breakpoint('mobile-l') {
+      text-align: center;
+    }
+  }
+
+  @include element('intro') {
+    @include font('stack-1', 1.2rem, 'normal');
+
+    @include breakpoint('mobile-l') {
+      text-align: center;
+    }
+  }
+
+  @include element('single-colour-selector') {
+    @include flex($direction: 'column', $row: 'center', $column: 'center');
+
+    margin-bottom: 1rem;
+  }
+
+  @include element('text-input') {
+    @include font('stack-1', 1rem, 'normal');
+
+    max-width: 12rem;
+  }
+
+  @include element('submit') {
+    margin: 1rem 0 ;
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../src/sass/variables.scss';
+
+@include block('inspiration-page', 't') {
+  @include flex($direction: 'column');
+  width: 100vw;
+
+  @include element('container') {
+    @include container();
+  }
+
+  @include element('title') {
+    @include font('stack-1', 3.6rem, 'normal');
+
+    margin-top: 1.5rem;
+
+
+    @include breakpoint('mobile-l') {
+      text-align: center;
+    }
+  }
+
+  @include element('intro') {
+    @include font('stack-1', 1.2rem, 'normal');
+
+    @include breakpoint('mobile-l') {
+      text-align: center;
+    }
+  }
+
+  @include element('colours') {
+    @include grid(($grid-gap / 2), 1fr 1fr 1fr 1fr);
+
+    @include breakpoint('tablet-l') {
+      @include grid(($grid-gap / 2), 1fr 1fr 1fr);
+    }
+
+    @include breakpoint('mobile-l') {
+      @include grid(($grid-gap / 2), 1fr);
+    }
+  }
+
+  @include element('colour') {
+    @include flex($direction: 'column', $row: 'flex-start', $column: 'center');
+
+    @include element('text') {
+      @include font('stack-1', 1rem);
+
+      margin-bottom: 0.5rem;
+    }
+  }
+}

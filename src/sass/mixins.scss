@@ -1,0 +1,261 @@
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+  right: $right;
+  top: $top;
+}
+
+@mixin animation($name, $speed: 5s, $fill-mode: 'forwards') {
+  animation: #{$name} $speed #{$fill-mode};
+}
+
+@mixin area($column-end: null, $column-start: null, $row-end: null, $row-start: null) {
+  grid-column-end: $column-end;
+  grid-column-start: $column-start;
+  grid-row-end: $row-end;
+  grid-row-start: $row-start;
+}
+
+@mixin block($name, $namespace) {
+  .#{$namespace}#{$namespace-separator}#{$name} {
+    @content;
+  }
+}
+
+@mixin breakpoint($breakpoint: null) {
+
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+
+    $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
+
+    @media #{$query} {
+      @content;
+    }
+  }
+}
+
+@mixin chevron($direction, $width, $height, $thickness, $color) {
+  @if $direction == 'up' {
+    transform: rotate(-45deg);
+  }
+
+  @if $direction == 'right' {
+    transform: rotate(45deg);
+  }
+
+  @if $direction == 'down' {
+    transform: rotate(135deg);
+  }
+
+  @if $direction == 'left' {
+    transform: rotate(-135deg);
+  }
+
+  border-color: $color;
+  border-style: solid;
+  border-width: $thickness $thickness 0 0;
+  content: '';
+  display: inline-block;
+  height: $height;
+  vertical-align: top;
+  width: $width;
+}
+
+@mixin container($width: $grid-width, $gutter: $grid-gap) {
+  margin: 0 auto;
+  max-width: $width;
+  padding: 0 $gutter;
+  width: 100%;
+
+  @include breakpoint('mobile-l') {
+    padding: 0 ($gutter / 2);
+  }
+}
+
+@mixin display($display, $width, $height) {
+  display: #{$display};
+  height: $height;
+  width: $width;
+}
+
+@mixin element($name, $name-2: null, $name-3: null) {
+  @at-root{
+    @if $name-3 != null {
+      &#{$element-separator}#{$name},
+      &#{$element-separator}#{$name-2},
+      &#{$element-separator}#{$name-3} {
+        @content;
+      }
+    }
+
+    @else if $name-2 != null {
+      &#{$element-separator}#{$name},
+      &#{$element-separator}#{$name-2} {
+        @content;
+      }
+    }
+
+    @else {
+      &#{$element-separator}#{$name} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin fixed($top: null, $right: null, $bottom: null, $left: null) {
+  bottom: $bottom;
+  left: $left;
+  position: fixed;
+  right: $right;
+  top: $top;
+}
+
+@mixin flex($row: null, $column: null, $direction: null) {
+  align-items: #{$column};
+  display: flex;
+  flex-direction: #{$direction};
+  justify-content: #{$row};
+}
+
+@mixin font-family($stack) {
+  font-family: map-get($stacks, $stack);
+}
+
+@mixin font-weight($weight) {
+
+  $raw-query: map-get($weights, $weight);
+
+  @if $raw-query {
+
+    $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
+
+    font-weight: #{$query};
+  }
+}
+
+@mixin font($family: null, $size: null, $weight: null) {
+  @if $family != null {
+    @include font-family($family);
+  }
+
+  @if $size != null {
+    font-size: $size;
+  }
+
+  @if $weight != null {
+    @include font-weight($weight);
+  }
+}
+
+@mixin grid($gap: null, $columns: null, $rows: null) {
+  display: grid;
+  grid-gap: $gap;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+}
+
+@mixin modifier($name, $name-2: null) {
+  @at-root{
+    @if $name-2 != null {
+      &#{$modifier-separator}#{$name},
+      &#{$modifier-separator}#{$name-2} {
+        @content;
+      }
+    }
+
+    @else {
+      &#{$modifier-separator}#{$name} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin relative($top: null, $right: null, $bottom: null, $left: null) {
+  bottom: $bottom;
+  left: $left;
+  position: relative;
+  right: $right;
+  top: $top;
+}
+
+@mixin rotate($degrees) {
+  transform: rotate($degrees);
+}
+
+@mixin scale($zoom) {
+  transform: scale($zoom);
+}
+
+@mixin state($state, $state-2: null, $prefix: $state-prefix) {
+  @if $state-2 != null {
+    &.#{$prefix}#{$state},
+    &.#{$prefix}#{$state-2} {
+      @content;
+    }
+  }
+
+  @else {
+    &.#{$prefix}#{$state} {
+      @content;
+    }
+  }
+}
+
+@mixin transition($property: 'all', $speed: $speed, $animation: 'ease') {
+  transition: #{$property} $speed #{$animation};
+}
+
+@mixin triangle($direction, $w, $h, $color) {
+  @if $direction == 'up' {
+    border-color: transparent transparent $color transparent;
+    border-width: 0 ($w / 2) $h ($w / 2);
+  }
+
+  @if $direction == 'right' {
+    border-color: transparent transparent transparent $color;
+    border-width: ($h / 2) 0 ($h / 2) $w;
+  }
+
+  @if $direction == 'down' {
+    border-color: $color transparent transparent transparent;
+    border-width: $h ($w / 2) 0 ($w / 2);
+  }
+
+  @if $direction == 'left' {
+    border-color: transparent $color transparent transparent;
+    border-width: ($h / 2) $w ($h / 2) 0;
+  }
+
+  @if $direction == 'left-up' {
+    border-color: $color transparent transparent;
+    border-width: $h $w 0 0;
+  }
+
+  border-style: solid;
+  height: 0;
+  width: 0;
+}
+
+@mixin truncate($value) {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $value;
+  overflow: hidden;
+}
+
+@mixin z-index($value) {
+
+  $raw-query: map-get($layers, $value);
+
+  @if $raw-query {
+
+    $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
+
+    z-index: #{$query};
+  }
+}

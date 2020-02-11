@@ -1,0 +1,35 @@
+@import '../../../src/sass/variables.scss';
+
+@include block('button', 'o') {
+  $self: &;
+
+  @include font('stack-1', 1rem);
+
+  border-radius: ($curvature * 24);
+  box-shadow: 0 3px 6px rgba($neutral-08, 0.22);
+  color: $neutral-00;
+  cursor: pointer;
+  display: inline-block;
+  line-height: $tap-area;
+  min-height: $tap-area;
+  min-width: $tap-area;
+  padding: 0 $grid-gap;
+  text-align: center;
+  text-transform: lowercase;
+  transition: all $speed cubic-bezier(0.25,0.8,0.25,1);
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+
+  @include modifier('primary') {
+    $color1: $brand-primary-01;
+    $color2: $brand-primary-03;
+
+    background: linear-gradient(-180deg, $color1 0%, $color2 100%);
+
+    &:hover {
+      background: linear-gradient(-180deg, $color1 0%, $color1 100%);
+    }
+  }
+}
